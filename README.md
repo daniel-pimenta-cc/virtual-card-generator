@@ -8,19 +8,19 @@
 
 <br />
 <div align="center">
-  <a href="https://whereis420.app/">
+  <a href="http://danielpimenta.tech/">
     <img src="preview.png" alt="Logo" height="200">
   </a>
 
-<a href="https://whereis420.app/"><h3 align="center">Virtual Card Generator</h3></a>
+<a href="http://danielpimenta.tech/"><h3 align="center">Virtual Card Generator</h3></a>
 
 <p align="center">
     Project created for Buzzvel’s admission test. The task was to create a website for virtual business cards where the user could register information and generate a QR code that leads to a page with the registered information when scanned..
     <br />
-    <a href="https://github.com/daniel-pimenta-cc/whereis420"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/daniel-pimenta-cc/virtual-card-generator"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://whereis420.app/">View Demo</a>
+    <a href="http://danielpimenta.tech/">View Demo</a>
   </p>
 </div>
 
@@ -50,9 +50,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-4:20 World Clock is a website that shows the next location in the world that will be 4:20. It was inspired by a joke with friends who always checked the time in different parts of the world when they smoked and "paid tribute" to that place. The site displays the next 4:20 time, and displays a funny animation of a joint if the time is between 4:20 and 4:30. Otherwise, it displays a countdown to the next 4:20. Additionally, the site always displays interesting information about the location, such as the local time.
+The project was created using the MVC pattern, where the models are located in the `app/Models` folder, the views are located in the `resources/views` folder and the controllers are located in the `app/Http/Controllers` folder. The project was deployed on a Google Cloud VM instance.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -61,7 +59,7 @@
 * [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/)
 * [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 * [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-
+* [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,11 +71,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* PHP
-* Composer
-* MySQL
+* Docker
+* Docker Compose
 
-Before starting the project, make sure you have PHP, Composer and MySQL installed on your machine.
+Before starting the project, make sure you have Docker and Docker Compose installed on your machine.
 
 ### Installation
 
@@ -90,22 +87,31 @@ Before starting the project, make sure you have PHP, Composer and MySQL installe
    ```sh
    cd virtual-card-generator
    ```
-3. Create .env file and configure your database
 
-4. Download dependencies
+3. Configure environment variables
    ```sh
-   composer install
+   cp .env.example .env
+   nano .env
    ```
 
-5. Create database tables
+* the `DB_HOST` variable should be set to `db` wich is the name of the database container
+
+4. Run the containers
    ```sh
-   php artisan migrate
+    docker-compose up -d
    ```
 
-6. Run 
+5. Install dependencies and setup application key
+first, enter the php container
    ```sh
-   php artisan serve
+    docker-compose exec backend /bin/bash
    ```
+then run the folowing comands on the container shell
+    ```sh
+    composer install
+    php artisan key:generate
+   ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,4 +126,3 @@ Project Link: [https://github.com/daniel-pimenta-cc/virtual-card-generator](http
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-[product-screenshot]: Screenshot.png
