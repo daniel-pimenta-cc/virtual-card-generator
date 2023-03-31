@@ -92,12 +92,17 @@ Before starting the project, make sure you have PHP, Composer and MySQL installe
    ```
 3. Create .env file and configure your database
 
-4. Create database tables
+4. Download dependencies
+   ```sh
+   composer install
+   ```
+
+5. Create database tables
    ```sh
    php artisan migrate
    ```
 
-5. Run 
+6. Run 
    ```sh
    php artisan serve
    ```
