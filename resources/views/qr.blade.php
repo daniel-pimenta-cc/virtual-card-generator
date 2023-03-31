@@ -31,7 +31,7 @@
                 </h4>
             </div>
             <div class="relative flex h-full w-full justify-center rounded-xl bg-cover">
-                {!! QrCode::size(150)->generate('https://localhost/card/' . $user->name) !!}
+                {!! QrCode::size(150)->generate(env('APP_URL') . '/'. $user->slug) !!}
             </div>
             <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
                 <div class="flex flex-col items-center justify-center">
